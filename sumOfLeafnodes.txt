@@ -1,0 +1,14 @@
+ public int SumofLeafNodes(Node root)
+    {
+        // your code here
+        if(root==null)
+        return 0;
+        if(root.left==null&&root.right==null)
+        {
+            sum=sum+root.data;
+            return 0;
+        }
+     SumofLeafNodes(root.left);
+     SumofLeafNodes(root.right);
+     return sum;
+    }
