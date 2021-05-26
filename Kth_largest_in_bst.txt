@@ -1,0 +1,22 @@
+ ArrayList<Integer> largest(Node node,int K,ArrayList<Integer> a)
+    {
+          if(node==null)
+          return null;
+          largest(node.left,K,a);
+          a.add(node.data);
+         largest(node.right,K,a);
+          
+    
+      return a; 
+     
+    }
+   
+    public int kthLargest(Node root,int K)
+    {
+        
+        
+        ArrayList<Integer> l=new ArrayList<Integer>();
+      l=  largest(root,K,l);
+      return l.get(l.size()-K);
+        
+    }
