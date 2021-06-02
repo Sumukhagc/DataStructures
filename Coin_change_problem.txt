@@ -1,0 +1,24 @@
+    public long coin(int[] S,int N,int sum,long t[][])
+    {
+        for(int i=0;i<=N;i++)
+        {
+            for(int j=0;j<=sum;j++)
+            {
+                if(j==0)
+                t[i][j]=1;
+                else if(i==0)
+                t[i][j]=0;
+                else if(S[i-1]>j)
+                t[i][j]=t[i-1][j];
+                else
+                t[i][j]=t[i-1][j]+t[i][j-S[i-1]];
+            }
+        }
+        return t[N][sum];
+    }
+    public long count(int S[], int N, int sum) 
+    { 
+        //code here.
+        long[][] t=new long[N+1][sum+1];
+      return  coin(S,N,sum,t);
+    } 
