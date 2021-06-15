@@ -1,0 +1,27 @@
+ public static int WB(String A, ArrayList<String> B,HashMap<String ,Integer> h)
+    {
+         if(A.length()==0)
+    return 1;
+    
+    if(h.containsKey(A))
+    return h.get(A);
+    
+       for(int i=1;i<=A.length();i++)
+        {
+          if(B.contains(A.substring(0,i))&& WB(A.substring(i),B,h)==1)
+          {
+              h.put(A,1);
+              return 1;
+          }
+          
+        }
+        h.put(A,0);
+        return 0;
+    }
+    public static int wordBreak(String A, ArrayList<String> B )
+    {
+        //code here
+   HashMap<String,Integer> h=new HashMap<String,Integer>();
+  return  WB(A,B,h);
+   
+    }
