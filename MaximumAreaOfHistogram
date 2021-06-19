@@ -1,0 +1,90 @@
+   public static long[] NSR(long hist[], long n) 
+    {
+        Stack<Integer> s=new Stack<Integer>();
+        long[] L=new long[(int)n];
+        int en=(int)n;
+        for(int i=en-1;i>=0;i--)
+        {
+            if(s.isEmpty())
+            {
+                L[i]=n;
+                s.push(i);
+            }
+            else if(hist[s.peek()]<hist[i])
+            {
+                L[i]=s.peek();
+                s.push(i);
+            }
+            else if(hist[s.peek()]>=hist[i])
+            {
+                while(!s.isEmpty()&& hist[s.peek()]>=hist[i])
+                {
+                    s.pop();
+                }
+                if(s.isEmpty())
+                {
+                    L[i]=n;
+                    s.push(i);
+                }
+                else{
+                L[i]=s.peek();
+                s.push(i);
+                }
+            }
+        }
+        return L;
+    }
+    public static long[] NSL(long hist[], long n) 
+    {
+        Stack<Integer> s=new Stack<Integer>();
+        long[] L=new long[(int)n];
+        
+        for(int i=0;i<n;i++)
+        {
+            if(s.isEmpty())
+            {
+                L[i]=-1;
+                s.push(i);
+            }
+            else if(hist[s.peek()]<hist[i])
+            {
+                L[i]=s.peek();
+                s.push(i);
+            }
+            else if(hist[s.peek()]>=hist[i])
+            {
+                while(!s.isEmpty()&& hist[s.peek()]>=hist[i])
+                {
+                    s.pop();
+                }
+                if(s.isEmpty())
+                {
+                    L[i]=-1;
+                    s.push(i);
+                }
+                else{
+                L[i]=s.peek();
+                s.push(i);
+                }
+            }
+        }
+        return L;
+    }
+    //Function to find largest rectangular area possible in a given histogram.
+    public static long getMaxArea(long hist[], long n) 
+    {
+      long[] L= NSL(hist,n);
+       long[] R=NSR(hist,n);
+       long[] width=new long[(int)n];
+       for(int i=0;i<n;i++)
+       {
+           width[i]=R[i]-L[i]-1;
+       }
+       long max=Integer.MIN_VALUE;
+         for(int i=0;i<n;i++)
+       {
+         if(width[i]*hist[i]>max)
+         max=width[i]*hist[i];
+       }
+       return max;
+    }
