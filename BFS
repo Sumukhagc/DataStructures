@@ -1,0 +1,25 @@
+    public ArrayList<Integer> bfsOfGraph(int V,ArrayList<ArrayList<Integer>> adj)
+    {
+       Queue<Integer> q=new LinkedList<Integer>();
+       ArrayList<Integer> al=new ArrayList<Integer>();
+       boolean[] visited=new boolean[V];
+       q.add(0);
+       visited[0]=true;
+       while(!q.isEmpty())
+       {
+           int to_print=q.poll();
+           al.add(to_print);
+           Iterator i=adj.get(to_print).listIterator();
+           while(i.hasNext())
+           {
+               int n=(int) i.next();
+               if(visited[n]==false)
+               {
+                   visited[n]=true;
+                   q.add(n);
+               }
+           }
+       }
+    
+        return al;
+    }
