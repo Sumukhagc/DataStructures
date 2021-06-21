@@ -1,0 +1,15 @@
+ int MPS(TreeNode root)
+    {
+        if(root==null)
+            return 0;
+       int l=MPS(root.left);
+       int r=MPS(root.right);
+       int temp=Math.max(Math.max(l,r)+root.val,root.val);
+       int ans=Math.max(temp,l+r+root.val);
+           tot=Math.max(tot,ans);
+       return temp;
+    }
+    public int maxPathSum(TreeNode root) {
+        MPS(root);
+        return tot;
+    }
