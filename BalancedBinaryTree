@@ -1,0 +1,25 @@
+  int v=1;
+    int check(Node root)
+    {
+       if(root==null)
+       return 0;
+   
+       int l=check(root.left);
+       int r=check(root.right);
+       if(Math.abs(l-r)>1)
+       v=0;
+       return Math.max(l,r)+1;
+       
+       
+    }
+    //Function to check whether a binary tree is balanced or not.
+    boolean isBalanced(Node root)
+    {
+	// Your code here\
+
+check(root);
+if(v==1)
+return true;
+else
+return false;
+    }
