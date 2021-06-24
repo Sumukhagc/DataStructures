@@ -1,0 +1,47 @@
+class QueueObj
+{
+    int hd;
+    Node node;
+    QueueObj(Node node,int height)
+    {
+        this.node=node;
+        this.hd=height;
+    }
+}
+
+class Solution
+{
+  
+    static ArrayList<Integer> topView(Node root)
+    {
+        ArrayList<Integer> al=new ArrayList<Integer>();
+        Queue<QueueObj> q=new LinkedList<>();
+        TreeMap<Integer,Integer> t=new TreeMap<>();
+       if(root==null)
+       return al;
+       else
+       {
+           q.add(new QueueObj(root,0));
+       }
+       while(!q.isEmpty())
+       {
+           QueueObj a=q.poll();
+           if(!t.containsKey(a.hd))
+            {
+                t.put(a.hd,a.node.data);
+            }
+            if(a.node.left!=null)
+            {
+                q.add(new QueueObj(a.node.left,a.hd-1));
+            }
+            if(a.node.right!=null)
+            {
+                q.add(new QueueObj(a.node.right,a.hd+1));
+            }
+        }
+        for(int i: t.keySet())
+        {
+            al.add(t.get(i));
+        }
+        return al;
+    }
