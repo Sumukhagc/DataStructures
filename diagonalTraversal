@@ -1,0 +1,31 @@
+ ArrayList<Integer> al;
+    Queue<Node> q;
+    Tree()
+    {
+        al=new ArrayList<Integer>();
+        q=new LinkedList<>();
+    }
+    
+    public int dT(Node root)
+    {
+        if(root==null )
+        return 0;
+        q.add(root.left);
+        al.add(root.data);
+        dT(root.right);
+        while(!q.isEmpty())
+        {
+            dT(q.poll());
+        }
+        return 0;
+    }
+
+       
+        
+    
+     public ArrayList<Integer> diagonal(Node root)
+      {
+           //add your code here.
+            dT(root);
+            return al;
+      }
