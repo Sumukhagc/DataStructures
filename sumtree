@@ -1,0 +1,27 @@
+int tree(Node root)
+    {
+        if(root==null)
+        return 0;
+        else
+        if(root.left==null&&root.right==null)
+        return root.data;
+        
+        
+        
+        int l=tree(root.left);
+        int r=tree(root.right);
+        if(l+r!=root.data)
+        {
+        flag=0;
+        return flag;
+        }
+        return root.data+l+r;
+    }
+	boolean isSumTree(Node root)
+	{
+             // Your code here
+        tree(root);
+       if(flag==0)
+       return false;
+       else return true;
+	}
