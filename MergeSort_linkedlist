@@ -1,0 +1,56 @@
+  static Node middle(Node node )
+    {
+        if(node==null)
+        return null;
+        else
+        {
+        Node fast=node.next;
+        Node slow=node;
+      
+        while(fast!=null&&fast.next!=null)
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        //System.out.println(slow.data);
+        return slow;
+        }
+    }
+
+    //Function to sort the given linked list using Merge Sort.
+    static Node mergeSort(Node head)
+    {
+
+      if(head==null|| head.next==null)
+      return head;
+            Node mid=middle(head);
+      Node head2=mid.next;
+      mid.next=null;
+     
+     return merge(mergeSort(head),mergeSort(head2));
+    }
+    static Node merge(Node f,Node l)
+    {
+        Node temp=new Node(0);
+        Node ret=temp;
+        while(f!=null&&l!=null)
+        {
+        if(f.data>l.data)
+        {
+            temp.next=l;
+            l=l.next;
+        }
+        else if(f.data<=l.data)
+        {
+            temp.next=f;
+            f=f.next;
+        }
+        temp=temp.next;
+        }
+if(f==null)
+temp.next=l;
+else if(l==null)
+temp.next=f;
+
+        return ret.next;
+    }
