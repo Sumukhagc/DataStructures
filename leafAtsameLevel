@@ -1,0 +1,35 @@
+class QueueObj
+{
+    int height;
+    Node node;
+    QueueObj(int height,Node node)
+    {
+        this.height=height;
+        this.node=node;
+    }
+}
+class Solution
+{
+    boolean check(Node root)
+    {
+	// Your code here
+	TreeMap<Integer,Integer> h=new TreeMap<>();
+	Queue<QueueObj> q=new LinkedList<>();
+	if(root==null)
+	return false;
+else	q.add(new QueueObj(0,root));
+while(!q.isEmpty())
+{
+    QueueObj a=q.poll();
+    if(a.node.left==null&&a.node.right==null)
+    h.put(a.height,a.node.data);
+    if(a.node.left!=null)
+    q.add(new QueueObj(a.height+1,a.node.left));
+    if(a.node.right!=null)
+    q.add(new QueueObj(a.height+1,a.node.right));
+}
+
+if(Math.abs(h.firstKey())==h.lastKey())
+	return true;
+	else return false;
+}
