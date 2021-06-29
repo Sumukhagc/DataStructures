@@ -1,0 +1,38 @@
+ static Node segregate(Node head)
+    {
+        Node t=head;
+        int one=0,two=0,zero=0;
+        while(t!=null)
+        {
+            if(t.data==0)
+            zero++;
+            if(t.data==1)
+            one++;
+            if(t.data==2)
+            two++;
+            t=t.next;
+        }
+        t=head;
+        int i=0;
+        while(i<zero)
+        {
+            t.data=0;
+            t=t.next;
+            i++;
+        }
+         i=0;
+        while(i<one)
+        {
+            t.data=1;
+            t=t.next;
+            i++;
+        }
+         i=0;
+        while(i<two)
+        {
+            t.data=2;
+            t=t.next;
+            i++;
+        }
+        return head;
+    }
