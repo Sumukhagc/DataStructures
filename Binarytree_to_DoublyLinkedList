@@ -1,0 +1,31 @@
+class Solution
+{
+    Node ret;
+    Node last=ret;
+  void create(int data)
+  {
+     if(ret==null)
+    {
+        ret=new Node(data);
+        last=ret;
+    }    
+     else 
+     {
+         Node a=new Node(data);
+         ret.right=a;
+         a.left=ret;
+         ret=ret.right;
+     }
+  }
+    //Function to convert binary tree to doubly linked list and return it.
+    Node bToDLL(Node root)
+    {
+	//  Your code here	
+	if(root==null)
+	return null;
+	bToDLL(root.left);
+	create(root.data);
+	bToDLL(root.right);
+	return last;
+    }
+}
