@@ -1,0 +1,38 @@
+public static Node findIntersection(Node head1, Node head2)
+    {
+        // code here.
+        LinkedHashMap<Integer,Integer> h=new LinkedHashMap<>();
+        Node t=head1;
+        while(t!=null)
+        {
+            h.put(t.data,1);
+            t=t.next;
+        }
+   
+        t=head2;
+        while(t!=null)
+        {
+            if(!h.containsKey(t.data))
+            {
+                h.put(t.data,1);
+            }
+            else
+            {
+                h.put(t.data,h.get(t.data)+1);
+            }
+            t=t.next;
+            
+        }
+        Node fin=new Node(-1);
+        Node cur=fin;
+        for(Integer i:h.keySet())
+            {
+                if(h.get(i)>1)
+                {
+                    cur.next=new Node(i);
+                    cur=cur.next;
+                }
+                
+            }
+        return fin.next;
+    }
