@@ -1,0 +1,18 @@
+ public static Node reverse(Node node, int k)
+    {
+     Node cur=node;
+     Node pre=null;
+     Node t=null;
+     int i=0;
+     while(cur!=null&&i<k)
+     {
+         t=cur.next;
+         cur.next=pre;
+         pre=cur;
+         cur=t;
+         i++;
+     }
+     if(t!=null)
+     node.next=reverse(t,k);
+     return pre;
+    }
