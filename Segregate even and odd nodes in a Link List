@@ -1,0 +1,27 @@
+Node divide(int N, Node head){
+        // code here
+        Node cur=head;
+        Node fin=new Node(-1);
+        Node t=fin;
+        
+        ArrayList<Integer> odd=new ArrayList<>();
+        while(cur!=null)
+        {
+            if(cur.data%2==0)
+           {
+            t.next=new Node(cur.data);
+            t=t.next;
+           }
+            else odd.add(cur.data);
+            cur=cur.next;
+        }
+       
+      
+       for(int i=0;i<odd.size();i++)
+        {
+            t.next=new Node(odd.get(i));
+            t=t.next;
+        }
+        
+     return fin.next;   
+    }
