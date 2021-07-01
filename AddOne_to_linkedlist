@@ -1,0 +1,38 @@
+ public static Node addOne(Node head) 
+    { 
+        //code here.
+       
+      Node rev=  reverse(head);
+     Node cur=rev;
+     Node pre=cur;
+     while(cur!=null)
+     {
+         if(cur==rev&&cur.data<9)
+         {
+             cur.data=cur.data+1;
+             carry=0;
+             break;
+         }
+         
+        else  if(cur.data<9)
+         {
+             
+             cur.data=cur.data+carry;
+             carry=0;
+             break;
+         }
+         else if(cur.data==9)
+         {
+            // cur.data=1+cur.data;
+             carry=1;
+             cur.data=0;
+             
+         }
+         pre=cur;
+         cur=cur.next;
+         
+     }
+     if(carry==1)
+     pre.next=new Node(carry);
+        return reverse(rev);
+    }
