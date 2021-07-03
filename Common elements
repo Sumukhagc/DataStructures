@@ -1,0 +1,26 @@
+    ArrayList<Integer> commonElements(int A[], int B[], int C[], int n1, int n2, int n3) 
+    {
+        // code here 
+        LinkedHashSet<Integer> h=new LinkedHashSet<>();
+        LinkedHashSet<Integer> h2=new LinkedHashSet<>();
+        LinkedHashSet<Integer> h3=new LinkedHashSet();
+      
+        for(int i=0;i<n1;i++)
+        {
+            h.add(A[i]);
+        }
+        for(int i=0;i<n2;i++)
+        {
+            if(h.contains(B[i]))
+            h2.add(B[i]);
+           
+        }
+                for(int i=0;i<n3;i++)
+        {
+            if(h2.contains(C[i]))
+           h3.add(C[i]);
+        
+        }
+         ArrayList<Integer> al=new ArrayList<>(h3); 
+        return al;
+    }
