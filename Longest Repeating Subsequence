@@ -1,0 +1,23 @@
+
+    public int LCS(String s1,int l,String s2,int[][] t)
+    {
+        for(int i=0;i<=l;i++)
+        {
+            for(int j=0;j<=l;j++)
+            {
+                if(i==0||j==0)
+                t[i][j]=0;
+                else if(s1.charAt(i-1)==s2.charAt(j-1)&&i!=j)
+                t[i][j]=1+t[i-1][j-1];
+                else t[i][j]=Math.max(t[i-1][j],t[i][j-1]);
+            }
+        }
+        return t[l][l];
+    }
+
+    public int LongestRepeatingSubsequence(String str)
+    {
+       int[][] t=new int[str.length()+1][str.length()+1];
+       String s=new String(new StringBuffer(str).reverse());
+     return  LCS(str,str.length(),str,t);
+    }
