@@ -1,0 +1,26 @@
+ public int edit(String s, String u,int m,int n,int[][] t)
+    {
+        for(int i=0;i<=m;i++)
+        {
+            for(int j=0;j<=n;j++)
+            {
+                if(i==0)
+                t[i][j]=j;
+                else if(j==0)
+                t[i][j]=i;
+                else if(s.charAt(i-1)==u.charAt(j-1))
+                t[i][j]=t[i-1][j-1];
+                else t[i][j]=1+Math.min(Math.min(t[i][j-1],t[i-1][j]),t[i-1][j-1]);
+            }
+        }
+        return t[m][n];
+    }
+  
+    public int editDistance(String s, String u) {
+       int l1=s.length();
+       int l2=u.length();
+       int[][] t=new int[l1+1][l2+1];
+       int l=edit(s,u,l1,l2,t);
+     
+       return l;
+           }
