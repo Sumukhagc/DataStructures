@@ -1,0 +1,27 @@
+ public int romanToDecimal(String str) {
+        // code here
+        int sum=0;
+        HashMap<Character,Integer> h=new HashMap<>();
+h.put('I',1);
+h.put('V',5);
+h.put('X',10);
+h.put('L',50);
+h.put('C',100);
+h.put('D',500);
+h.put('M',1000);
+
+
+for(int i=0;i<str.length()-1;i++)
+{
+    int n=h.get(str.charAt(i));
+    if(h.get(str.charAt(i))<h.get(str.charAt(i+1)))
+    {
+        sum=sum-n;
+    }
+    else sum=sum+n;
+}
+       
+    
+    sum=sum+h.get(str.charAt(str.length()-1));
+       return sum;  
+    } 
