@@ -1,0 +1,22 @@
+ public ArrayList<Integer> dfs(ArrayList<ArrayList<Integer>> adj,ArrayList<Integer> al,int i,boolean[] b)
+      {
+          al.add(i);
+          b[i]=true;
+          Iterator<Integer> it= adj.get(i).listIterator();
+          while(it.hasNext())
+          {
+              int n=(int)it.next();
+              if(b[n]==false)
+              dfs(adj,al,n,b);
+          }
+          return al;
+      }
+    //Function to return a list containing the DFS traversal of the graph.
+    public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj)
+    {
+        ArrayList<Integer> al=new ArrayList<>();
+        boolean[] b=new boolean[V];
+       return dfs(adj,al,0,b);
+      
+      
+    }
