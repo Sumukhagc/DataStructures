@@ -1,0 +1,11 @@
+ public String removeConsecutiveCharacter(String S){
+      String ans=String.valueOf(S.charAt(0));
+      for(int i=1;i<S.length();i++)
+    {
+        if(S.charAt(i-1)!=S.charAt(i))
+        {
+            ans=ans+String.valueOf(S.charAt(i));
+        }
+    }
+    return ans;
+    }
