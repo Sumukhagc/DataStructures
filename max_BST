@@ -1,0 +1,43 @@
+class EachNode
+{
+    boolean isBST;
+    int ans;
+    int min;
+    int max;
+    EachNode(boolean isBST,int ans,int min,int max)
+    {
+        this.isBST=isBST;
+        this.ans=ans;
+        this.min=min;
+        this.max=max;
+    }
+}
+
+class Solution{
+static EachNode BST(Node root)
+{
+    if(root==null)
+    return new EachNode(true,0,Integer.MAX_VALUE,Integer.MIN_VALUE);
+    if(root.left==null&&root.right==null)
+    return new EachNode(true,1,root.data,root.data);
+    EachNode l=BST(root.left);
+    EachNode r=BST(root.right);
+    if(l.isBST&&r.isBST)
+    {
+        if(root.data>l.max&&root.data<r.min)
+        {
+            return new EachNode(true,l.ans+r.ans+1,Math.min(root.data,l.min),Math.max(root.data,r.max));
+        }
+        
+    }
+     return new EachNode(false,Math.max(l.ans,r.ans),0,0);
+}
+    // Return the size of the largest sub-tree which is also a BST
+    static int largestBst(Node root)
+    {
+    EachNode node=BST(root);
+    return node.ans;
+        
+    }
+    
+}
