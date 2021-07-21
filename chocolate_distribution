@@ -1,0 +1,14 @@
+public long findMinDiff (ArrayList<Long> a, long n, long m)
+    {
+        // your code here
+        Collections.sort(a);
+        long min=Long.MAX_VALUE;
+        int am=(int) m;
+        for(int i=0;i<a.size()&&am<=a.size();i++)
+        {
+            if(a.get(am-1)-a.get(i)<min)
+            min=a.get(am-1)-a.get(i);
+            am++;
+        }
+        return min;
+    }
