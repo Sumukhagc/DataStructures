@@ -1,0 +1,13 @@
+int median(int matrix[][], int r, int c) {
+        // code here  
+        int a[]=new int[r*c];
+        int p=0;
+        for(int i=0;i<r;i++)
+        {
+            int[] temp=matrix[i];
+            System.arraycopy(temp,0,a,p,c);
+            p=p+c;
+        }
+        Arrays.sort(a);
+        return a[(r*c)/2];
+    }
