@@ -1,0 +1,36 @@
+ static boolean match(String wild, String pattern)
+    {
+        // code here
+        boolean t[][]=new boolean[pattern.length()+1][wild.length()+1];
+        t[0][0]=true;
+        for(int i=1;i<wild.length();i++)
+        {
+            if(wild.charAt(i-1)=='*')
+            {
+                t[0][i]=t[0][i-1];
+            }
+        }
+        
+        
+        
+        for(int i=1;i<=pattern.length();i++)
+        {
+            for(int j=1;j<=wild.length();j++)
+            {
+               
+                if(pattern.charAt(i-1)==wild.charAt(j-1)||wild.charAt(j-1)=='?')
+                {
+                    t[i][j]=t[i-1][j-1];
+                }
+                else if(wild.charAt(j-1)=='*')
+                {
+                    t[i][j]=t[i-1][j]||t[i][j-1];
+                }
+                else t[i][j]=false;
+                 
+            }
+        }
+        
+    
+        return t[pattern.length()][wild.length()];
+    }
