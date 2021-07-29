@@ -1,0 +1,36 @@
+ public int minSwaps(int arr[])
+    {
+        int ans = 0;
+        int[] temp = new int[arr.length];
+        for(int i=0;i<arr.length;i++)
+        {
+            temp[i]=arr[i];
+        }
+
+        // Hashmap which stores the
+        // indexes of the input array
+        HashMap<Integer, Integer> h
+            = new HashMap<Integer, Integer>();
+
+        Arrays.sort(temp);
+        for (int i = 0; i < arr.length; i++) 
+        {
+            h.put(arr[i], i);
+        }
+         //System.out.println(h);
+      for(int i=0;i<arr.length;i++)
+      {
+          if(temp[i]!=arr[i])
+          {
+              ans++;
+              int a=arr[i];
+              arr[i]=arr[h.get(temp[i])];
+              arr[h.get(temp[i])]=a;
+              h.put(a,h.get(temp[i]));
+              h.put(arr[i],i);
+              
+              
+          }
+      }
+      //System.out.println(h);
+return ans;}
