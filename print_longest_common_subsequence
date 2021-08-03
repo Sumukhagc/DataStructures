@@ -1,0 +1,29 @@
+     public static String  LCS(String s1,int l,String s2,int m,int[][] t)
+    {
+        int len=0;
+        int x=0,y=0;
+        for(int i=0;i<=l;i++)
+        {
+            for(int j=0;j<=m;j++)
+            {
+                if(i==0||j==0)
+                t[i][j]=0;
+                else if(s1.charAt(i-1)==s2.charAt(j-1)){
+                t[i][j]=1+t[i-1][j-1];
+                if (len < t[i][j]) {
+               len = t[i][j];
+               x = i;
+               y = j;
+            }
+                }
+                else t[i][j]=0;
+            }
+        }
+        String s="";
+        while(t[x][y]!=0)
+        {
+            s=s+String.valueOf(s1.charAt(x-1));
+            x--; y--;
+        }
+        return s;
+    }
