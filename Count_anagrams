@@ -1,0 +1,13 @@
+public List<List<String>> Anagrams(String[] string_list) {
+      HashMap<String,ArrayList<String>> h=new HashMap<>();
+      for(String s:string_list)
+      {
+          char[] a=s.toCharArray();
+          Arrays.sort(a);
+          String v=new String(a);
+          if(!h.containsKey(v))
+          h.put(v,new ArrayList<>());
+          h.get(v).add(s);
+      }
+      return new ArrayList<>(h.values());
+    }
